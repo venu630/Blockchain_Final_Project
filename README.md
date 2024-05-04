@@ -3,6 +3,7 @@
 ## Overview
 This project is a decentralized e-commerce website built using React.js for the front end and Solidity for smart contract development. The project utilizes Pinata for uploading images, ensuring decentralized and secure file storage.
 
+![image](https://github.com/venu630/Blockchain_Final_Project/assets/84617956/73b63c47-6f7a-4cb3-86b0-e5f9cd7094cf)
 
 ## Features
 1. Decentralized Architecture: The application is built on decentralized principles, leveraging blockchain technology for enhanced security, transparency, and trustlessness.
