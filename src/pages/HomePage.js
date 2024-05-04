@@ -1,13 +1,11 @@
+//This the Homepage for this website
 import React from "react";
 
 const HomePage = () => {
   return (
-    <div>
-      <head>
-        <title>My E-Commerce Site</title>
-        <meta name="description" content="Welcome to My E-Commerce Site" />
-      </head>
+    <React.Fragment>
 
+    {/* Main Section */}
       <main className="bg-white">
         <div className="hero bg-gray-200 py-20 ">
           <div className="container mx-auto px-6 md:px-12 xl:px-0">
@@ -24,7 +22,7 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-
+        {/* Learn More Section */}
         <section className="flex flex-wrap items-center justify-center md:justify-between my-12 container mx-auto px-6">
           <div className="md:w-1/2 p-6">
             <h2 className="text-3xl text-gray-800 font-bold mb-3">
@@ -47,14 +45,14 @@ const HomePage = () => {
             />
           </div>
         </section>
-
+        {/* Footer Section */}
         <footer className="bg-gray-800 text-white py-6">
           <div className="container mx-auto px-6 md:px-12 xl:px-0 text-center">
             <p>© 2024 Venu Sirisanagandla Site. All rights reserved.</p>
           </div>
         </footer>
       </main>
-    </div>
+    </React.Fragment>
   );
 };
 

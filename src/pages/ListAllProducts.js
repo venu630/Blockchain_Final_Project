@@ -1,4 +1,5 @@
-import ProductCard from "../components/ProductCard";
+//This page is used to list all products
+import ProductCard from "../components/ProductCard"; //Importing ProductCard component
 import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import { contractABI, contractAddress } from "../utils/Static";
@@ -6,14 +7,19 @@ import { contractABI, contractAddress } from "../utils/Static";
 const ListAllProducts = () => {
   const [items, setItems] = useState([]);
 
+  //This hook is used to update the products list
   useEffect(() => {
+    //fetchItems is used to connect and get all products
     const fetchItems = async () => {
+      //Getting provider information from Metamask
       const provider = new ethers.providers.Web3Provider(window.ethereum);
+      //Getting the contract object to get all function from the smart contract
       const contract = new ethers.Contract(
         contractAddress,
         contractABI,
         provider
       );
+      //Using getAllProducts() defined in smart contracts for retrieving all products 
       const items = await contract.getAllProducts();
       const itemsFormatted = items.map((item) => ({
         id: item.id.toNumber(),
@@ -26,6 +32,7 @@ const ListAllProducts = () => {
       setItems(itemsFormatted);
     };
 
+    //Calling the fetchItems() 
     fetchItems();
   }, [items]);
 
@@ -39,6 +46,7 @@ const ListAllProducts = () => {
             </a>
           </div>
           <div className="pr-4">
+            {/* This button is used to go to the Selling Products page */}
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
               <a href="listallproducts/upload">Sell Products</a>
             </button>
@@ -49,13 +57,14 @@ const ListAllProducts = () => {
       <main className="flex-grow bg-white">
         <div className="container mx-auto px-6 md:px-12 xl:px-0">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 my-12 p-8">
+            {/* Displaying all products */}
             {items.map((item) => (
               <ProductCard key={item.id} item={item} />
             ))}
           </div>
         </div>
       </main>
-
+      {/* Footer */}
       <footer className="bg-gray-800 text-white py-6">
         <div className="container mx-auto px-6 md:px-12 xl:px-0 text-center">
           <p>© 2024 Venu Sirisanagandla Site. All rights reserved.</p>
