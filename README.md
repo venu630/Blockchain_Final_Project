@@ -12,6 +12,17 @@ This project is a decentralized e-commerce website built using React.js for the 
 4. Pinata Integration: Pinata is used for uploading images, ensuring decentralized file storage and retrieval.
 5. Remix.ethereum: Remix is used to deploy the smart contracts
 
+## Product Sceenshorts
+![image](https://github.com/venu630/Blockchain_Final_Project/assets/84617956/01ee81ab-dd82-4bb3-85ef-ea173f136637)
+
+![image](https://github.com/venu630/Blockchain_Final_Project/assets/84617956/301d3b16-99f6-47be-ad12-a8fddc4f7cfe)
+
+![image](https://github.com/venu630/Blockchain_Final_Project/assets/84617956/0bbb7b77-f0bd-4882-8f92-759b12158d4d)
+
+
+![image](https://github.com/venu630/Blockchain_Final_Project/assets/84617956/d7476738-8d4b-4af4-9d9c-e72fbe00cd20)
+
+
 ## Installation
     git clone https://github.com/venu630/Blockchain_Final_Project.git
 
