@@ -9,9 +9,10 @@ const MetamaskConnection = () => {
   const connectWalletHandler = async () => {
     if (window.ethereum && window.ethereum.isMetaMask) {
       try {
-        // const accounts = await window.ethereum.request({
-        //   method: "eth_requestAccounts",
-        // });
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        console.log(accounts);
         setConnectionButtonText("Wallet Connected");
         setWalletConnectionStatus(true);
       } catch (error) {
