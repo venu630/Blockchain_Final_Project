@@ -19,6 +19,7 @@ const ListAllProducts = () => {
         contractABI,
         provider
       );
+
       //Using getAllProducts() defined in smart contracts for retrieving all products 
       const items = await contract.getAllProducts();
       const itemsFormatted = items.map((item) => ({
@@ -45,6 +46,7 @@ const ListAllProducts = () => {
               Nike Shoes
             </a>
           </div>
+          <div><a target="_blank" rel="noreferrer" href="https://sepolia.etherscan.io/address/0x9A177A0FAEEFC532B00Fcd09625f76610C8cD067">Transaction Id: 0x9A....D067 </a></div>
           <div className="pr-4">
             {/* This button is used to go to the Selling Products page */}
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">

@@ -140,6 +140,7 @@ const UploadProduct = () => {
                   className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
                   placeholder="Enter product title"
                   value={title}
+                  maxlength="21"
                   onChange={(e) => setTitle(e.target.value)}
                 />
               </div>

@@ -34,6 +34,7 @@ const ProductCard = ({ item }) => {
       //Using buyProdct() from the smart contract to buy a particular product by providing product id and price
       const transaction = await contract.buyProduct(id, { value: new_price });
       await transaction.wait();
+      alert("Product bought successfully!")
     } catch (error) {
       console.error("Transaction failed:", error);
       setIsLoading(false);
@@ -53,7 +54,7 @@ const ProductCard = ({ item }) => {
         />
         <div className="p-4">
           <h2 className="text-xl font-bold mb-2">{item.title}</h2>
-          <p className="text-gray-600 mb-4">{item.description}</p>
+          {/* <p className="text-gray-600 mb-4">{item.description}</p> */}
           <p className="text-gray-800 font-bold">Price: (ETH) {item.price}</p>
           <div className="flex justify-between mt-4">
             {/* Displaying availability status of the product */}
