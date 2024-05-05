@@ -103,13 +103,13 @@ const UploadProduct = () => {
     <div className="flex flex-col min-h-screen">
       {uploadStatus && (
         <div
-          class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"
+          className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"
           role="alert"
         >
-          <span class="block sm:inline">Product uploaded successfully!</span>
-          <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+          <span className="block sm:inline">Product uploaded successfully!</span>
+          <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
             <svg
-              class="fill-current h-6 w-6 text-green-600"
+              className="fill-current h-6 w-6 text-green-600"
               role="button"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
@@ -140,7 +140,7 @@ const UploadProduct = () => {
                   className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
                   placeholder="Enter product title"
                   value={title}
-                  maxlength="21"
+                  maxLength="21"
                   onChange={(e) => setTitle(e.target.value)}
                 />
               </div>

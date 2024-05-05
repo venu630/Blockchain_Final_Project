@@ -5,6 +5,7 @@ import { contractABI, contractAddress } from "../utils/Static";
 
 const ProductCard = ({ item }) => {
   const [isLoading, setIsLoading] = useState(false);
+  // const [transactionHash, setTransactionHash] = useState('')
   const price = item.price;
   const id = item.id;
 
@@ -33,8 +34,10 @@ const ProductCard = ({ item }) => {
 
       //Using buyProdct() from the smart contract to buy a particular product by providing product id and price
       const transaction = await contract.buyProduct(id, { value: new_price });
-      await transaction.wait();
-      alert("Product bought successfully!")
+      const result = await transaction.wait();
+      alert(
+        `Product bought successfully! Transaction Hash: ${result.transactionHash}`
+      );
     } catch (error) {
       console.error("Transaction failed:", error);
       setIsLoading(false);
@@ -78,6 +81,10 @@ const ProductCard = ({ item }) => {
               </button>
             )}
           </div>
+          <p className="text-gray-800 mt-4 break-all">
+            <span className="font-bold">Transaction Hash:</span>{" "}
+            {item.transactionHash}
+          </p>
         </div>
       </div>
     </div>

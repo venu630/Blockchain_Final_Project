@@ -19,7 +19,15 @@ const ListAllProducts = () => {
         contractABI,
         provider
       );
-
+      
+      // Filtering transactionHash from the logs of products
+      const itemList = contract.filters.ProductListed();
+      const logs = await provider.getLogs({ ...itemList, fromBlock: 0 });
+      const filteredLogs = logs.map(log => ({
+          ...contract.interface.parseLog(log).args,
+          transactionHash: log.transactionHash 
+      }));
+      
       //Using getAllProducts() defined in smart contracts for retrieving all products 
       const items = await contract.getAllProducts();
       const itemsFormatted = items.map((item) => ({
@@ -29,7 +37,9 @@ const ListAllProducts = () => {
         price: ethers.utils.formatEther(item.price),
         sold: item.sold,
         description: item.description,
+        transactionHash: filteredLogs.find(log => log.productId.toNumber() === item.id.toNumber()).transactionHash
       }));
+
       setItems(itemsFormatted);
     };
 
@@ -46,7 +56,7 @@ const ListAllProducts = () => {
               Nike Shoes
             </a>
           </div>
-          <div><a target="_blank" rel="noreferrer" href="https://sepolia.etherscan.io/address/0x9A177A0FAEEFC532B00Fcd09625f76610C8cD067">Transaction Id: 0x9A....D067 </a></div>
+          <div><a target="_blank" rel="noreferrer" href="https://sepolia.etherscan.io/address/0x9A177A0FAEEFC532B00Fcd09625f76610C8cD067">Contract Id: 0x9A...D067 </a></div>
           <div className="pr-4">
             {/* This button is used to go to the Selling Products page */}
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
@@ -58,7 +68,7 @@ const ListAllProducts = () => {
 
       <main className="flex-grow bg-white">
         <div className="container mx-auto px-6 md:px-12 xl:px-0">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 my-12 p-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-8 my-12 p-8">
             {/* Displaying all products */}
             {items.map((item) => (
               <ProductCard key={item.id} item={item} />
