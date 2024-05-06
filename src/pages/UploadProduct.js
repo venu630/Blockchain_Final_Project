@@ -12,6 +12,7 @@ const UploadProduct = () => {
   const [image, setImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [uploadStatus, setUploadStatus] = useState(false);
+  const [transHash, setTransHash] = useState('');
   const fileInputRef = useRef(null);
 
   const onImageChange = (event) => {
@@ -74,6 +75,8 @@ const UploadProduct = () => {
         signer
       );
 
+      
+
       //Using listAllProducts() defined in smart contracts used for uploading product to the blockchain
       const transaction = await contract.listAllProducts(
         title,
@@ -81,8 +84,8 @@ const UploadProduct = () => {
         ipfsHash,
         ethers.utils.parseUnits(price, "ether")
       );
-      await transaction.wait();
-      //Setting all the input fields to empty
+      const result = await transaction.wait();
+      setTransHash(result.transactionHash)
       setTitle("");
       setDescription("");
       setPrice("");
@@ -106,7 +109,7 @@ const UploadProduct = () => {
           className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"
           role="alert"
         >
-          <span className="block sm:inline">Product uploaded successfully!</span>
+          <span className="block sm:inline">Product uploaded successfully with Transaction Hash: {transHash}</span>
           <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
             <svg
               className="fill-current h-6 w-6 text-green-600"

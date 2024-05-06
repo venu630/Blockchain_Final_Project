@@ -24,6 +24,7 @@ contract Marketplace {
         productCount = 0;
     }
 
+//This listAllProducts() is used to upload product to the blockchain by providing the product details
     function listAllProducts(string memory _title, string memory _description, string memory _imageHash, uint _price) external {
         require(_price > 0, "Price must be greater than zero");
         
@@ -42,6 +43,7 @@ contract Marketplace {
         productCount++;
     }
 
+//This buyProduct() is used to buy the product
     function buyProduct(uint _id) external payable {
         require(_id < productCount, "Product ID does not exist");
         Product storage product = products[_id];
@@ -59,12 +61,16 @@ contract Marketplace {
         emit ProductSold(_id, prevOwner, msg.sender, product.price);
     }
 
-    function getAllProducts() external view returns (Product[] memory) {
-        return products;
-    }
-
+//This getProductById() is used to a particular product details by id
     function getProductById(uint _id) external view returns (Product memory) {
         require(_id < productCount, "Product ID does not exist");
         return products[_id];
     }
+
+//This getAllProducts() is used to retrieve all product details
+    function getAllProducts() external view returns (Product[] memory) {
+        return products;
+    }
+
+    
 }
